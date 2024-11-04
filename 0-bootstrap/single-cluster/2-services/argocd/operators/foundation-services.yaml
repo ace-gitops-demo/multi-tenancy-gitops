@@ -21,7 +21,7 @@ spec:
       values: |
         foundation-sevices:
           subscriptions:
-            platformnavigator:
+            foundation-sevices:
               name: foundation-sevices
               subscription:
                 channel: v4.6
