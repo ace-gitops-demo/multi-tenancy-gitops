@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foundation-sevices
+  annotations:
+    argocd.argoproj.io/sync-wave: "220"
+  labels:
+    gitops.tier.group: ibm-cloudpak
+    gitops.tier.layer: services
+    gitops.tier.source: git
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: openshift-operators
+    server: 'https://kubernetes.default.svc'
+  project: services
+  source:
+    path: operators/foundation-sevices
+    helm:
+      values: |
+        foundation-sevices:
+          subscriptions:
+            platformnavigator:
+              name: foundation-sevices
+              subscription:
+                channel: v4.6
+                installPlanApproval: Automatic
+                name: ibm-common-service-operator
+                source: opencloud-operators
+                sourceNamespace: openshift-marketplace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
