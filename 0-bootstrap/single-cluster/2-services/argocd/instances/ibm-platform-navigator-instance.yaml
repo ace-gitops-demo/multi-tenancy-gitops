@@ -32,6 +32,6 @@ spec:
               version: "16.1.0"
               replicas: 2
               storage:
-                class: ibmc-vpc-block-10iops-tier
+                class: ocs-external-storagecluster-cephfs
 
 
