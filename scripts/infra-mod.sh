@@ -151,7 +151,7 @@ if [[ "$platform" == "aws" ]]; then
     elif [[ "$platform" == "gcp" ]]; then
     storageClass=${defsc:-"standard"}
     elif [[ "$platform" == "ibmcloud" ]]; then
-    storageClass=${defsc:-"ibmc-vpc-block-10iops-tier"}
+    storageClass=${defsc:-"ocs-external-storagecluster-ceph-rbd"}
 fi
 
 
